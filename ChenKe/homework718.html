@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Title</title>
+
+</head>
+<body>
+
+    <!--没有边框-->
+    <table border="6" width="50%" cellpadding="10px">
+ <!--   <caption align="left"九九乘法表></caption>-->
+        <script>
+    //alert("我的第一个javascript");
+    // document.write("<h1>这是一个标题</h1>");
+    // document.write("<p>这是一个段落</p>");s
+   // document.write("<table");
+   document.write("<h1>九九乘法表</h1>")
+    for (var i=1;i<9;i++){
+        document.write("<tr>");
+        for(var j=1;j<i+1;j++){
+            document.write("<th>");
+            document.write(i+"*"+j+"="+i*j);
+            document.write("</th>");
+        };
+        document.write("</tr>")
+        document.write("<br>");
+    };
+        </script>
+    </table>
+</body>
+</html>

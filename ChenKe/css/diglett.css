@@ -1,0 +1,31 @@
+#game_panel{
+    width: 600px;
+    height: 500px;
+    background-color: gray;
+    /*相对定位  目的使当前的box随着当前的game_panel面板位置移动 。*/
+    position: relative;/*relative*/
+  /*  left: 0px;*/
+  /*  top: 0px;*/
+}
+.box{
+   /* width: 100px;*/
+  /*  height: 100px;*/
+    background-color: green;
+    /*颜色*/
+    border: 2px solid white;
+    position: absolute;
+}
+.diglettup{
+    /*背景图形式*/
+    background-image: url("../images/float.gif");
+  border :2px solid white;
+    /*一定要定义position*/
+    position: absolute;
+}
+.diglettpress{
+    /*背景图形式*/
+    background-image: url('../images/press.gif');
+    border :2px solid white;
+    /*一定要定义position*/
+    position: absolute;
+}
