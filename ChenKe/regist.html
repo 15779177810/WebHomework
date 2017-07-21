@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>login</title>
+    <meta name="author" content="Administrator" />
+    <script type="text/javascript">
+
+        function clearText(){
+            //get ..是一个集合
+        var aaa=document.getElementsByName("username")[0];
+            //数组 时刻记住
+            if("请输入用户名"==aaa.value){
+                aaa.value="";
+            }
+        }
+        /*getElementsByTagName 获取基于指定元素名称的对象集合。 */
+        function checkUsername(){
+            var bbb=document.getElementsByName("username")[0];
+        var aaa=document.getElementById("spanus");
+        //aaa.value
+            //var reg=new RegExp("^[a-zA-Z0-9]{6}$");
+            //     ^//w{4,}$
+            var reg=new RegExp("^[a-zA-Z0-9_]{4,}$");
+           // [0-9]{6}
+            var input=bbb.value;
+            var flag=reg.test(input);//
+          //  alert(flag);
+        if (flag){
+            aaa.innerHTML="√".fontcolor("green");
+            return true;
+        }
+        else{
+            aaa.innerHTML="×".fontcolor("red");
+            return false;
+        }
+        }
+        function changText(){
+            var aaa=document.getElementsByName("username")[0];
+            aaa.value="用户名"
+        }
+        function segdxaaa(){/*????????????*/
+            var aaa=document.getElementsByName("sex");
+            var bbb=document.getElementById("spansex");
+            //??????????????????????????
+            //radio
+           for(var i=0;i<aaa.length;i++) {
+               //注意注意
+               if (aaa[i].checked) {
+                   bbb.innerHTML = "√".fontcolor("green");
+                   return true;
+               }
+
+           }
+           //覆盖掉
+
+                bbb.innerHTML = "×".fontcolor("red");
+                return false;
+
+
+        }
+
+        function checkpsw() {
+            var reg=new RegExp("^\\d{6}$");
+            var aaa=document.getElementsByName("psw")[0];
+            var bbb=document.getElementById("spanps");
+            var input=aaa.value;
+            <!--input字符串啊-->
+            var flag =reg.test(input);
+            if(flag){
+                bbb.innerHTML="√".fontcolor("green");
+                return true;
+            }
+            else{
+                bbb.innerHTML="×".fontcolor("red");
+                return false;
+            }
+        }
+        function checkrepsw(){
+            var aaa=document.getElementsByName("psw")[0];
+            var bbb=document.getElementsByName("repsw")[0];
+            var ccc=document.getElementById("spanpas");
+            if(aaa.value==bbb.value){
+                ccc.innerHTML="√".fontcolor("green");
+                return true;
+            }else{
+                ccc.innerHTML="×".fontcolor("red");
+                return false;
+            }
+        }
+        function checkCountry(){
+            //获取下拉列表框对象
+            var node=document.getElementsByName("courty")[0];
+            //selectedIndex 表示下拉列表框 选中的索引值 从0开始
+            if(node.selectedIndex==0){
+                //获取span对象
+                var span=document.getElementById("courtyspan");
+                span.innerHTML="请选择一个国籍".fontcolor('red');
+                span.innerHTML="×".fontcolor("red");
+                return false;
+            }
+            span.innerHTML="√".fontcolor("green");
+            return true;
+        }
+
+        //校验 爱好
+        function checkHoby(){
+            //获取当前的性别 单选按钮对象
+            var sex=document.getElementsByName("hoby");
+            //获取span对象
+            var spanid=document.getElementById("hobyspan");
+            //checked 返回 选择的结果 如果当前单选按钮被选中 ，则返回true ，如果没有选择 返回false
+            for(var i=0;i<sex.length;i++){
+                if(sex[i].checked){
+                    spanid.innerHTML="√".fontcolor("green");
+                    return true;
+                }
+            }
+            spanid.innerHTML="必须选择一个爱好".fontcolor("red");
+            return false;
+        }
+
+        function checkEmail(){
+            //创建正则表达式 1》密码必须为6位。	2》密码必须为数字。
+            var reg=new RegExp("^.+@.+\\.com");
+            var aaa=document.getElementsByName("email")[0];
+            var bbb=document.getElementById("emailspan");
+            var input=aaa.value;
+            <!--input字符串啊-->
+            var flag =reg.test(input);
+            if(flag){
+                bbb.innerHTML="√".fontcolor("green");
+                return true;
+            }
+            else{
+                bbb.innerHTML="×".fontcolor("red");
+                return false;
+            }
+
+        }
+
+        function checkForm(){
+            return checkUsername()&&checkpsw()&&checkrepsw()&&checkEmail()&&segdxaaa()&&checkHoby()&&checkCountry();
+        }
+        function checkbutton(){
+            if (checkUsername()&&checkpsw()&&checkrepsw()&&checkEmail()&&segdxaaa()&&checkHoby()&&checkCountry()){
+                var aaa= document.getElementById("aaaaa");
+                aaa.submit();
+            }
+
+        }
+    </script>
+    <!-- 注册 -->
+</head>
+<body>
+<div align="center">
+    <!--放在这里-->
+    <form action="" method="post" onsubmit="return checkForm()"><!--onsubmit="return gettitle()"-->
+        <!--表格来嵌套格式  -->
+        <!-- onfocus获取焦点   onblur 失去焦点 -->
+        <table border="1px">
+            <tr>
+                <td>请输入用户名 ：</td>
+                <td><input type="text" value="请输入用户名" name="username" onclick="clearText()" onblur="checkUsername()"/></td>
+                <td><span id="spanus"></span><br/></td>
+                <td><input type="button"  onclick="changText()" value="点我改变文本框内的内容"/</td>>
+            </tr>
+            <tr>
+                <td>请输入密码 ：</td>
+                <td><input type="password" name="psw" onblur="checkpsw()"/></td>
+                <td><span id="spanps"></span><br/></td>
+            </tr>
+
+            <tr>
+                <td>请重新输入密码 ：</td>
+                <td><input type="password" name="repsw" onblur="checkrepsw()"/></td>
+                <td><span id="spanpas"></span><br/></td>
+            </tr>
+            <tr>
+            <td>请输入邮箱 ：</td>
+            <td><input type="text" name="email" onblur="checkEmail()"/></td>
+            <td width="150px"><span id="emailspan"> </span></td>
+        </tr>
+            <tr>
+                <td>请选择一个性别  ：</td>
+                <td>
+                    <input type="radio" name="sex" value="male" onblur="segdxaaa()"/>男
+                    <input type="radio" name="sex" value="female" onblur="segdxaaa()"/>女
+                    <td><span id="spansex"></span><br/></td>
+                </td>
+
+
+
+            </tr>
+            <tr>
+                <td>请选择一个爱好  ：</td>
+                <td>
+                    <input type="checkbox" name="hoby" value="football" onblur="checkHoby()"/>踢足球
+                    <input type="checkbox" name="hoby" value="basketball"onblur="checkHoby()"/>打篮球
+                    <input type="checkbox" name="hoby" value="vollyball"onblur="checkHoby()"/>打排球
+                </td>
+                <td width="150px"><span id="hobyspan"> </span></td>
+            </tr>
+            <tr>
+                <td>请选择一个国籍  ：</td>
+                <td>
+                    <!-- 下拉列表框-->
+                    <select name="courty" onblur="checkCountry()">
+                        <option value="none">----------请选择------------</option>
+                        <!-- selected 默认选中值-->
+                        <option value="china" selected>中国</option>
+                        <option value="japan">日本</option>
+                        <option value="usa">美国</option>
+                    </select>
+                </td>
+                <td width="150px"><span id="courtyspan"> </span></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <!--？？？-->
+                    <input type="submit" value="注册"/>
+                    <input type="button" value="button提交表单" id="aaaaa" onclick="checkbutton()"/>
+                    <input type="reset" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
